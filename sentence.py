@@ -14,82 +14,46 @@ prepositions, conjunctions and interjections.
    * Interjection (INT)- Ouch! Wow! Great! Help! Oh! Hey! Hi!
 '''
 
-class Sentence:
+class sentence:
 
     # Construct any instance
-    def __init__(self, noun, verb, adjective, adverb, preposition, conjuction, pronoun, interjection):
-        self.noun = noun
+    def __init__(self, subject, verb, object):
+        self.subject = subject
         self.verb = verb
-        self.adjective = adjective
-        self.adverb = adverb
-        self.preposition = preposition
-        self.conjuction = conjuction
-        self.pronoun = pronoun
-        self.interjection = interjection
+        self.object = object
+        # trace.create()
 
-    # Get any variable
-    @property
-    def get_noun(self):
-        return str(self.noun)
+    # Get any property
+    def get_subject(self):
+        return str(self.subject)
 
-    @property
+    def set_subject(self, subject):
+        try:
+            already_added = self.get_subject()
+            recently_added = str(subject).lower()
+            self.subject = already_added + '$' + recently_added
+        except:
+            print("hey")
+
     def get_verb(self):
         return str(self.verb)
 
-    @property
-    def get_adjective(self):
-        return str(self.adjective)
-
-    @property
-    def get_adverb(self):
-        return str(self.adverb)
-
-    @property
-    def get_preposition(self):
-        return str(self.preposition)
-
-    @property
-    def get_conjuction(self):
-        return str(self.conjuction)
-
-    @property
-    def get_pronoun(self):
-        return str(self.pronoun)
-
-    @property
-    def get_interjection(self):
-        return str(self.interjection)
-
-    # Set any variable
-    @property
-    def set_noun(self, noun):
-        self.noun = str(noun).lower()
-
-    @property
     def set_verb(self, verb):
-        self.verb = str(verb).lower()
+        try:
+            already_added = self.get_verb()
+            recently_added = str(verb).lower()
+            self.verb = already_added + '$' + recently_added
+        except:
+            print("hey")
 
-    @property
-    def set_adjective(self, adjective):
-        self.adjective = str(adjective).lower()
+    def get_object(self):
+        return str(self.object)
 
-    @property
-    def set_adverb(self, adverb):
-        self.adverb = str(adverb).lower()
-
-    @property
-    def set_preposition(self, preposition):
-        self.preposition = str(preposition).lower()
-
-    @property
-    def set_conjunction(self, conjunction):
-        self.conjunction = str(conjunction).lower()
-
-    @property
-    def set_pronoun(self, pronoun):
-        self.pronoun = str(pronoun).lower()
-
-    @property
-    def set_interjection(self, interjection):
-        self.interjection = str(interjection).lower()
+    def set_object(self, object):
+        try:
+            already_added = self.get_object()
+            recently_added = str(object).lower()
+            self.object = already_added + '$' + recently_added
+        except:
+            print("hey")
 
