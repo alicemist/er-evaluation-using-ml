@@ -8,15 +8,12 @@ nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
 
-
-
-# This function divides all text into
-# separated sentences.
+# sentence divider
 def divider(text):
     return nltk.tokenize.sent_tokenize(text)
 
 
-
+# chunk
 def tagger(sentence):
     # This statement gives us tokenized words and
     # pos tags. We are using nltk to obtain pos tags.
@@ -59,3 +56,6 @@ def tagger(sentence):
             print("Other part of sentence")
 
     return instance
+
+def handler():
+    print("handles the rules")

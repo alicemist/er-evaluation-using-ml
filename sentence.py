@@ -23,7 +23,7 @@ class sentence:
             recently_added = str(subject).lower()
             self.subject = already_added + '$' + recently_added
         except:
-            write(self.id, self.log_file("An error occured in set subject method."))
+            write(self.id, self.log_file("An error occurred in set subject method."))
 
     def get_verb(self):
         return str(self.verb)
@@ -34,7 +34,7 @@ class sentence:
             recently_added = str(verb).lower()
             self.verb = already_added + '$' + recently_added
         except:
-            write(self.id, self.log_file("An error occured in set verb method."))
+            write(self.id, self.log_file("An error occurred in set verb method."))
 
     def get_object(self):
         return str(self.object)
@@ -45,7 +45,7 @@ class sentence:
             recently_added = str(object).lower()
             self.object = already_added + '$' + recently_added
         except:
-            write(self.id, self.log_file("An error occured in set object method."))
+            write(self.id, self.log_file("An error occurred in set object method."))
 
     def get_sentence(self):
         return str(self.subject) + ' ' + str(self.verb) + ' ' + str(self.object)

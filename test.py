@@ -1,23 +1,8 @@
 
-
-from pos import tagger
-
-#from trace import *
-sentence = "student takes many course from grade"
-
-tagger(sentence)
+from pos import tagger, divider
 
 
-#create("text")
+example = "Student studies courses"
 
-
-#from sentence import sentence
-
-#sn = sentence("","","")
-
-
-#from pos import divider
-
-
-
-#print(divider("I'm Oguzhan. What's your name?"))
+# Check "divider" under pos.py
+print(divider(text=example))

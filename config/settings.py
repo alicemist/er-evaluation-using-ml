@@ -19,3 +19,8 @@ NOUN = ['NN', 'NNS', 'NNP', 'NNPS']
 PATH_FOR_OUTPUTS = "output/"
 
 PAIR_NAME_FOR_OUTPUT = ""
+
+#################################
+# Heruistics for database rules #
+#################################
+
