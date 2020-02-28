@@ -1,4 +1,7 @@
-'''
+
+    ------------------------
+    | POS : Part of Speech |
+    ------------------------
 
 Most POS are divided into sub-classes. POS Tagging simply
 means labeling words with their appropriate Part-Of-Speech.
@@ -8,29 +11,7 @@ like the previous word, next word, is first letter capitalized etc.
 NLTK has a function to get pos tags and it works after
 tokenization process.
 
-'''
 
-import nltk
-import sentence as sntnc
-
-from config import settings
-
-'''
-:returns Sentence object
-'''
-
-# Download some specifications from remote repository
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
-
-# Input
-sentence = "student takes many course from grade"
-
-#token = nltk.word_tokenize(sentence)
-words_and_tags = nltk.pos_tag(nltk.word_tokenize(sentence))
-
-
-'''
     ----------------
     | POS tag list |
     ----------------
@@ -70,54 +51,3 @@ words_and_tags = nltk.pos_tag(nltk.word_tokenize(sentence))
     * WP	 :     wh-pronoun	who, what
     * WP$	 :     possessive wh-pronoun	whose
     * WRB	 :     wh-abverb where, when
-    
-'''
-
-# Create a new sentence-object instance
-sentence = sntnc.Sentence('sub', 'verb', 'obj')
-
-# Statement for combining related part-of-speech together
-
-kullanilmis = False
-
-for word, tag in words_and_tags:
-    #print('word: ' + word)
-    #print('tag: ' + tag)
-    print(kullanilmis)
-    # Words are seperated into properties of Sentences-object
-    # statically through POS tag
-    #if kullanilmis == False and (tag == 'NN' or tag == 'NNS' or tag == 'NNP' or tag == 'NNPS'):
-    #    sentence.set_subject(word)
-
-
-    # subject
-    if kullanilmis == False and (tag == 'NN' or tag == 'NNS' or tag == 'NNP' or tag == 'NNPS'):
-        sentence.set_subject(word)
-        kullanilmis = True
-
-    # verb:
-    elif tag in settings.VERB:
-        sentence.set_verb(word)
-
-
-    elif kullanilmis == True and tag in settings.NOUN:
-        sentence.set_object(word)
-        print("nounnn")
-
-
-
-    else:
-        print("else düstüm")
-
-
-
-
-
-print(sentence.get_subject())
-print(sentence.get_verb())
-print(sentence.get_object())
-
-
-
-
-

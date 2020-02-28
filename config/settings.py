@@ -1,66 +1,21 @@
-'''
-
-    This class is to manage all functionalities and variables.
-    This class has finalized variables. They are set in here.
-
-'''
 
 
+'''INDEX
+
+ser : sentence error
+
+wtp : word-tag-pair
+'''''
+
+
+# Control to debug mode
+DEBUG = True
+
+# Heuristics for verb and nouns using pos tags
 VERB = ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']
 NOUN = ['NN', 'NNS', 'NNP', 'NNPS']
 
-'''
-This field is to verify tracing is on/off.
-It is defined in static method.
-:parameter - nothing.
-:returns - IS_TRACING as boolean field.
-'''
-@staticmethod
-def is_tracing():
-    IS_TRACING = True
+# Stores all output
+PATH_FOR_OUTPUTS = "output/"
 
-    return IS_TRACING
-
-
-'''
-    ----------------
-    | POS tag list |
-    ----------------
-
-    * CC	 :     coordinating conjunction
-    * CD	 :     cardinal digit
-    * DT	 :     determiner
-    * EX	 :     existential there (like: "there is" ... think of it like "there exists")
-    * FW	 :     foreign word
-    * IN	 :     preposition/subordinating conjunction
-    * JJ	 :     adjective	'big'
-    * JJR	 :     adjective, comparative	'bigger'
-    * JJS	 :     adjective, superlative	'biggest'
-    * LS	 :     list marker	1)
-    * MD	 :     modal	could, will
-    * NN	 :     noun, singular 'desk'
-    * NNS	 :     noun plural	'desks'
-    * NNP	 :     proper noun, singular	'Harrison'
-    * NNPS	 :     proper noun, plural	'Americans'
-    * PDT	 :     predeterminer	'all the kids'
-    * POS	 :     possessive ending	parent\'s
-    * PRP	 :     personal pronoun	I, he, she
-    * PRP$	 :     possessive pronoun my, his, hers
-    * RB	 :     adverb	very, silently,
-    * RBR	 :     adverb, comparative	better
-    * RBS	 :     adverb, superlative	best
-    * RP	 :     particle	give up
-    * TO	 :     to	go 'to' the store.
-    * UH	 :     interjection	errrrrrrrm
-    * VB	 :     verb, base form	take
-    * VBD	 :     verb, past tense	took
-    * VBG	 :     verb, gerund/present participle	taking
-    * VBN	 :     verb, past participle	taken
-    * VBP	 :     verb, sing. present, non-3d	take
-    * VBZ	 :     verb, 3rd person sing. present	takes
-    * WDT	 :     wh-determiner	which
-    * WP	 :     wh-pronoun	who, what
-    * WP$	 :     possessive wh-pronoun	whose
-    * WRB	 :     wh-abverb where, when
-
-'''
+PAIR_NAME_FOR_OUTPUT = ""
