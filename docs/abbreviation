@@ -1,0 +1,20 @@
+
+    ----------------
+    | ABBREVIATION |
+    ----------------
+
+    * ser       :   sentence error
+    * wtp       :   word-tag-pair
+    * pos       :   part of speech
+    * vb        :   verb
+    * vbd       :   verb, past tense
+    * vbg       :   verb, present
+    * vbn       :   verb, past particaple
+    * vbp       :   verb, single present
+    * vbz       :   verb, 3rd person single present
+    * nn        :   noun
+    * nns       :   noun plural
+    * nnp       :   proper noun
+    * nnps      :   proper noun plural
+    * log       :   record of output
+    * trace     :   log

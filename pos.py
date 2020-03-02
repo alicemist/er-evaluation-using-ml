@@ -3,6 +3,7 @@ import sentence as generate
 from config import settings
 from trace import create, write
 
+
 # Download some specifications from remote repository
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
@@ -13,7 +14,6 @@ def divider(text):
     return nltk.tokenize.sent_tokenize(text)
 
 
-# chunk
 def tagger(sentence):
     # This statement gives us tokenized words and
     # pos tags. We are using nltk to obtain pos tags.
@@ -33,14 +33,14 @@ def tagger(sentence):
 
     # This statement creates a log file that
     # is named instance's unique identifier.
-    log = "wtp-" + instance.get_id()
-    create(log)
+    log_file = "wtp-" + instance.get_id()
+    create(log_file)
 
     already_used = False
 
     for word, tag in words_and_tags:
 
-        write(log, "Word: {} - Tag: {}".format(word, tag))
+        write(log_file, "Word: {} - Tag: {}".format(word, tag))
 
         if already_used == False and tag in settings.NOUN:
             instance.set_subject(word)
@@ -53,9 +53,41 @@ def tagger(sentence):
             instance.set_object(word)
 
         else:
-            print("Other part of sentence")
+            continue
 
     return instance
 
-def handler():
-    print("handles the rules")
+EID = 0 # entity id
+AID = 0 # attribute id
+RID = 0 # relation id
+
+def handler(processed_sentence):
+
+    entity = []
+    attribute = []
+    relation = []
+    special_verbs = ["contains", "have", "has"]
+
+    subject = processed_sentence.get_subject()
+    verb = processed_sentence.get_verb()
+    object = processed_sentence.get_object()
+
+    if subject in entity:
+        print("")
+        
+    else:
+        print("")
+
+
+
+
+
+
+
+
+
+
+
+
+
+

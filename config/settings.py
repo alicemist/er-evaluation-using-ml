@@ -1,12 +1,5 @@
 
 
-'''INDEX
-
-ser : sentence error
-
-wtp : word-tag-pair
-'''''
-
 
 # Control to debug mode
 DEBUG = True

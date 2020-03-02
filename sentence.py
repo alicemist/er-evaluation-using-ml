@@ -48,5 +48,5 @@ class sentence:
             write(self.id, self.log_file("An error occurred in set object method."))
 
     def get_sentence(self):
-        return str(self.subject) + ' ' + str(self.verb) + ' ' + str(self.object)
+        return "{} {} {}".format(self.get_subject(), self.get_verb(), self.get_object())
 
