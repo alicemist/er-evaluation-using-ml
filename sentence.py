@@ -19,9 +19,12 @@ class sentence:
 
     def set_subject(self, subject):
         try:
-            already_added = self.get_subject()
-            recently_added = str(subject).lower()
-            self.subject = already_added + '$' + recently_added
+            if self.get_subject():
+                already_added = self.get_subject()
+                recently_added = str(subject).lower()
+                self.subject = already_added + ',' + recently_added
+            else:
+                self.subject = str(subject).lower()
         except:
             write(self.id, self.log_file("An error occurred in set subject method."))
 
@@ -30,9 +33,12 @@ class sentence:
 
     def set_verb(self, verb):
         try:
-            already_added = self.get_verb()
-            recently_added = str(verb).lower()
-            self.verb = already_added + '$' + recently_added
+            if self.get_verb():
+                already_added = self.get_verb()
+                recently_added = str(verb).lower()
+                self.verb = already_added + ',' + recently_added
+            else:
+                self.verb = str(verb).lower()
         except:
             write(self.id, self.log_file("An error occurred in set verb method."))
 
@@ -41,9 +47,12 @@ class sentence:
 
     def set_object(self, object):
         try:
-            already_added = self.get_object()
-            recently_added = str(object).lower()
-            self.object = already_added + '$' + recently_added
+            if self.get_object():
+                already_added = self.get_object()
+                recently_added = str(object).lower()
+                self.object = already_added + ',' + recently_added
+            else:
+                self.object = str(object).lower()
         except:
             write(self.id, self.log_file("An error occurred in set object method."))
 

@@ -1,0 +1,4 @@
+Word: courses - Tag: NNS
+Word: courses - Tag: NNS
+Word: takes - Tag: VBZ
+Word: Student - Tag: NN

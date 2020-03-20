@@ -2,20 +2,24 @@
 from pos import tagger, divider, handler
 
 
-example = "Student studies courses"
+from object import attribute
+
+
+example = "Student takes courses courses"
 
 # Check "divider" under pos.py
 #print(divider(text=example))
 
 # Check handler under pos.py
-handler(tagger("student takes course"))
-handler(tagger("course belongs to a department"))
-handler(tagger("a course has title and department"))
-handler(tagger("course has prefix"))
-handler(tagger("course has prefix"))
-handler(tagger("course has prefix"))
+handler(tagger(example))
+#handler(tagger("course belongs to a department"))
+#handler(tagger("a course has title and department"))
+#handler(tagger("course has prefix"))
+#handler(tagger("course has prefix"))
+#handler(tagger("course has prefix"))
 
 
+#print(tagger(example).get_sentence())
 '''
 try:
     if subject:

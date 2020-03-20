@@ -1,0 +1,4 @@
+Word: oguzhan - Tag: JJ
+Word: is - Tag: VBZ
+Word: name - Tag: NN
+Word: my - Tag: PRP$

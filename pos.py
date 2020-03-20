@@ -61,26 +61,66 @@ EID = 0 # entity id
 AID = 0 # attribute id
 RID = 0 # relation id
 
+from object import entity as e
+from object import attribute as a
 def handler(processed_sentence):
 
-    entity = []
+    entity = ["student"]
     attribute = []
     relation = []
-    special_verbs = ["contains", "have", "has"]
+    special_verbs = ["takes", "contains", "have", "has", "includes"]
 
     subject = processed_sentence.get_subject()
     verb = processed_sentence.get_verb()
     object = processed_sentence.get_object()
 
-    if subject in entity:
-        print("")
-        
+    # We are focusing on verb element of sentence.
+    # If it is in special verbs list, object is an attribute.
+    # Otherwise, there is a relation between subject and object.
+    if verb in special_verbs:
+
+        # While verb is in special verbs list, we must
+        # check subject is in entity, or not. If the "subject"
+        # is in entity, we must store object as attributes.
+        if subject in entity:
+
+            # The object might include more than one elements
+            # that is seperated with comma. Thus, we must divide it
+            # into seperated elements in a list.
+            if object.split(","):
+                divided_elements = object.split(",")
+
+                # We must obtain elements which will be stored.
+                # Therefore, we must run a loop through divided
+                # elements list. Each iteration is a potentially
+                # attribute. Thus, new attribute object must be created
+                # with currently iteration, and then it should be added
+                # into stored list.
+                attribute_list = []
+                for current_element in divided_elements:
+                    new_attribute = a.attribute(str(current_element))
+                    attribute_list.append(new_attribute)
+
+            # If the object contains one element certainly,
+            # we must just create an attribute.
+            else:
+                new_attribute = a.attribute(object)
+
+            # The subject already exists.
+            # adamı bul subeject gore ve icine ekle...
+
+        # Otherwise, we must create an entity using "subject"
+        # and store "the object" as attributes.
+        else:
+            #entity olustur
+            new_entity = e.entity(subject, "")
+
+            # attribute ları onun icine store et
+
+
     else:
-        print("")
-
-
-
-
+        print()
+        # will be implemented relation state.
 
 
 

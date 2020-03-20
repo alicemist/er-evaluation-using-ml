@@ -1,0 +1,5 @@
+Word: department - Tag: NN
+Word: a - Tag: DT
+Word: to - Tag: TO
+Word: belongs - Tag: NNS
+Word: course - Tag: NN

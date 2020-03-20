@@ -1,0 +1,3 @@
+Word: courses - Tag: NNS
+Word: studies - Tag: NNS
+Word: Student - Tag: NN
