@@ -1,3 +1,0 @@
-Word: course - Tag: NN
-Word: takes - Tag: VBZ
-Word: student - Tag: NN

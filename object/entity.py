@@ -14,4 +14,10 @@ class entity:
         self.name = str(name).lower()
 
     def set_attributes(self, attributes):
-        self.attributes = attributes
+        if attributes == "":
+            self.attributes = attributes
+        self.attributes = str(self.attributes) + ',' + str(attributes)
+
+    def find(self, name):
+        if self.name == name:
+            return self

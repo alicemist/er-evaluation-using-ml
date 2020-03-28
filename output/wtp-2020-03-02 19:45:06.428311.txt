@@ -1,3 +1,0 @@
-Word: prefix - Tag: VBN
-Word: has - Tag: VBZ
-Word: course - Tag: NN
