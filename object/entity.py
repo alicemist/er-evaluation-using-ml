@@ -16,7 +16,7 @@ class entity:
     def set_attributes(self, attributes):
         if attributes == "":
             self.attributes = attributes
-        self.attributes = str(self.attributes) + ',' + str(attributes)
+        self.attributes = str(self.attributes) + ' ' + str(attributes)
 
     def find(self, name):
         if self.name == name:

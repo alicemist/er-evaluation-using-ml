@@ -1,6 +1,0 @@
-Word: department - Tag: NN
-Word: and - Tag: CC
-Word: title - Tag: VBN
-Word: has - Tag: VBZ
-Word: course - Tag: NN
-Word: a - Tag: DT
