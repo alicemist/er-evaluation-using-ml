@@ -1,12 +1,24 @@
 from core.trace import create_debug_file as create, write_debug_results as write, display
 import prop.messages as messages
 
-# Included objects here.
+##############################
+#                            #
+#    OBJECT DEFINITIONS      #
+#                            #
+##############################
 from object import attribute as a
 from object import entity as e
 from object import relation as r
 import prop.common as properties
 
+
+##############################
+#                            #
+#        VALIDATORS          #
+#                            #
+##############################
+
+# Get divided attributes using object
 def get_divided_attributes(object):
     try:
         # Eventually, it will collect attribute.
@@ -40,7 +52,7 @@ def get_divided_attributes(object):
     except:
         display(messages.ERROR_AT_DIVIDING_ATTRIBUTES)
 
-
+# Get the reference of entity using name and entity list
 def get_entity_by_name(entity_name, entity_list):
     try:
         for entity in entity_list:
@@ -51,7 +63,7 @@ def get_entity_by_name(entity_name, entity_list):
     except:
         display(messages.ERROR_AT_SEARCHING_ENTITY_BY_NAME)
 
-
+# Get entity names using entity list
 def get_entity_names(entity_list):
     list_for_entity_names = []
 

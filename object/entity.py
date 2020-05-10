@@ -1,3 +1,4 @@
+# Define entity with name, attributes
 class entity:
 
     def __init__(self, name, attributes):

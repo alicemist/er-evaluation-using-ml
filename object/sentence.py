@@ -2,6 +2,7 @@
 from core.trace import create_debug_file as create, write_debug_results as write, display
 import datetime
 
+# Define a sentence with subject, verb, object
 class sentence:
 
     def __init__(self, subject, verb, object):

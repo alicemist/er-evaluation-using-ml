@@ -7,7 +7,7 @@ noun_list = ['NN', 'NNS', 'NNP', 'NNPS']
 
 # We are focusing on verb to selection algorithm.
 # Therefore, we have to define special verbs into this list.
-special_verb_list = ["takes", "contains", "have", "has", "includes"]
+special_verb_list = ["contains", "have", "has", "includes"]
 
 # If there is no returning value.
 nothing = ""

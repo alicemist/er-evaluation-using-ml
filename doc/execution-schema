@@ -1,0 +1,19 @@
+    ####################################################################################################
+    # The execution design is given:                                                                   #
+    #                                                                                                  #
+    #                               Focusing on verb                                                   #
+    #                                      |                                                           #
+    #                       +--------------+--------------+                                            #
+    #                       |                             |                                            #
+    #                   Special verb               Not special verb                                    #
+    #                       |                             |                                            #
+    #           +-----------+--------------+              +--------------                              #
+    #           |                          |                            |                              #
+    #     Subject exists            Does not exists         > create new relation, then store          #
+    #           |                          |                                                           #
+    # > determine attribute list           |                                                           #
+    # > find existing entity               +------------------+                                        #
+    # > append new attributes onto                            |                                        #
+    # ...existing entity                         > determine attribute list                            #
+    #                                            > create new entity, then store                       #
+    ####################################################################################################
