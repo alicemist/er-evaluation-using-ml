@@ -1,0 +1,28 @@
+INFO:So should this
+INFO:Tokenization : ['Student', 'has', 'name', ',', 'surname', ',', 'number', '.']
+INFO:Pos tags : [('Student', 'NN'), ('has', 'VBZ'), ('name', 'NN'), (',', ','), ('surname', 'NN'), (',', ','), ('number', 'NN'), ('.', '.')]
+INFO:Chunking : [('Student', 'NN'), ('has', 'VBZ'), ('name', 'NN'), (',', ','), ('surname', 'NN'), (',', ','), ('number', 'NN'), ('.', '.')]
+INFO: > sentence : student has name,surname,number
+INFO: > subject : student
+INFO: > verb : has
+INFO: > object : name,surname,number
+INFO:Obtained special verb is has
+INFO:Entities : []
+INFO:Attributes : [<object.attribute.attribute object at 0x11d7bd4a8>, <object.attribute.attribute object at 0x11d7bd438>, <object.attribute.attribute object at 0x11ff237f0>]
+INFO:Tokenization : ['Course', 'contains', 'title', ',', 'er', '.']
+INFO:Pos tags : [('Course', 'NN'), ('contains', 'VBZ'), ('title', 'JJ'), (',', ','), ('er', 'NN'), ('.', '.')]
+INFO:Chunking : [('Course', 'NN'), ('contains', 'VBZ'), ('title', 'JJ'), (',', ','), ('er', 'NN'), ('.', '.')]
+INFO: > sentence : course contains er
+INFO: > subject : course
+INFO: > verb : contains
+INFO: > object : er
+INFO:Obtained special verb is contains
+INFO:Entities : ['student']
+INFO:Attributes : [<object.attribute.attribute object at 0x11ff23828>]
+INFO:Tokenization : ['Student', 'takes', 'course', '.']
+INFO:Pos tags : [('Student', 'NN'), ('takes', 'VBZ'), ('course', 'NN'), ('.', '.')]
+INFO:Chunking : [('Student', 'NN'), ('takes', 'VBZ'), ('course', 'NN'), ('.', '.')]
+INFO: > sentence : student takes course
+INFO: > subject : student
+INFO: > verb : takes
+INFO: > object : course

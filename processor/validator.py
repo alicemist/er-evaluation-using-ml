@@ -1,5 +1,6 @@
 from core.trace import create_debug_file as create, write_debug_results as write, display
 import prop.messages as messages
+import logging
 
 ##############################
 #                            #
@@ -11,6 +12,12 @@ from object import entity as e
 from object import relation as r
 import prop.common as properties
 
+##############################
+#                            #
+#     LOG FILE SETTINGS      #
+#                            #
+##############################
+logging.basicConfig(filename='validator.log',format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 ##############################
 #                            #
@@ -47,10 +54,11 @@ def get_divided_attributes(object):
             attribute_list.append(new_attribute)
 
         # Returns attributes as list.
+        logging.info("Attributes : " + str(attribute_list))
         return attribute_list
 
     except:
-        display(messages.ERROR_AT_DIVIDING_ATTRIBUTES)
+        logging.error(messages.ERROR_AT_DIVIDING_ATTRIBUTES)
 
 # Get the reference of entity using name and entity list
 def get_entity_by_name(entity_name, entity_list):
@@ -61,7 +69,7 @@ def get_entity_by_name(entity_name, entity_list):
         return properties.nothing
 
     except:
-        display(messages.ERROR_AT_SEARCHING_ENTITY_BY_NAME)
+        logging.error(messages.ERROR_AT_SEARCHING_ENTITY_BY_NAME)
 
 # Get entity names using entity list
 def get_entity_names(entity_list):
@@ -72,7 +80,8 @@ def get_entity_names(entity_list):
             current = entity.get_name()
             list_for_entity_names.append(current)
 
+        logging.info("Entities : " + str(list_for_entity_names))
         return list_for_entity_names
 
     except:
-        display(messages.ERROR_AT_CREATING_LIST)
+        logging.error(messages.ERROR_AT_CREATING_LIST)

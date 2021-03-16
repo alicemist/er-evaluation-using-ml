@@ -7,9 +7,10 @@ from ui.component import *
 
 test_text = "Student has name, surname, number. Course contains title, er. Student takes course."
 
-for sentence in s.divider(text=test_text):
+for sentence in s.sentence_segmentation(text=test_text):
     try:
-        s.handler(s.tagger(sentence))
+        s.chunking(s.tokenization(sentence))
+        print(s.chunking(s.tokenization(sentence)))
     except:
         display(messages.ERROR_AT_LOOPING_SENTENCE.format(str(sentence)))
 

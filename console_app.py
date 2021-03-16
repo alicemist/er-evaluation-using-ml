@@ -3,16 +3,23 @@ import prop.messages as messages
 from core.trace import display
 from ui.component import *
 
+import logging
+logging.basicConfig(filename='app.log',format='%(levelname)s:%(message)s', level=logging.DEBUG)
+
 def main(test_text):
 
     # Execute all pos-methods
-    for sentence in s.divider(text=test_text):
+    # parsing
+    logging.info('So should this')
+    for sentence in s.segmentation(text=test_text):
         try:
-            s.handler(s.tagger(sentence))
+            s.parser(s.chunking(s.pog_tagging(s.tokenization(sentence))))
+            print(s.entity_list)
         except:
             display(messages.ERROR_AT_LOOPING_SENTENCE.format(str(sentence)))
 
     # Tables
+    # generating er statement
     for entity in s.entity_list:
         print(line_border())
         print(table_line(entity.get_name()))
@@ -39,7 +46,7 @@ if __name__ == "__main__":
         test_text = ""
 
         if choice == 1:
-            test_text = messages.UI_SAMPLE_DATA
+            test_text = "Student has name, surname, number. Course contains title, er. Student takes course."
         elif choice == 2:
             test_text = input(messages.UI_CHOICE_TEXT)
         elif choice == 3:

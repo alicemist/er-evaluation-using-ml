@@ -31,3 +31,9 @@ D
 ui/component.py,e/3/e30d724e400b99a5ab6494ffb93dec0b0af769d6
 >
 console_app.py,1/5/15d2639145211c271559983c51aa715c1f085701
+=
+prop/rules.py,e/b/eb35774fe159b1c7cfee774d97842681dbaaf5ec
+=
+validator.log,7/f/7f8c1fcf29de7e5a440380c0757cbdb6ac5e9cca
+7
+app.log,a/0/a04cdc1b813999384ef385ac5191cbe69e844545

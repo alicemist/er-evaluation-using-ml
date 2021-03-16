@@ -1,4 +1,5 @@
 import nltk
+import logging
 
 ##############################
 #                            #
@@ -9,7 +10,8 @@ import processor.validator as vm
 import prop.messages as messages
 import prop.common as properties
 from core.trace import create_debug_file as create, write_debug_results as write, display
-
+from config.settings import DEBUG as is_debugging
+from config.settings import LOG as is_tracing
 
 ##############################
 #                            #
@@ -21,7 +23,6 @@ from object import entity as e
 from object import relation as r
 from object import attribute as a
 
-
 ##############################
 #                            #
 #      NLTK MANAGEMENT       #
@@ -29,7 +30,6 @@ from object import attribute as a
 ##############################
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
-
 
 ##############################
 #                            #
@@ -42,26 +42,90 @@ relation_list = []
 
 ##############################
 #                            #
-#          DIVIDER           #
+#     LOG FILE SETTINGS      #
 #                            #
 ##############################
-def divider(text):
-    return nltk.tokenize.sent_tokenize(text)
+logging.basicConfig(filename='app.log',format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 
-##############################
-#                            #
-#          TAGGER            #
-#                            #
-##############################
-def tagger(sentence):
-    # This statement gives us tokenized words and
-    # pos tags. We are using nltk to obtain pos tags.
-    # nltk has own pos tag method that uses tokenized
-    # words, then obtains pos tag for each word in
-    # input sentence.
-    words_and_tags = nltk.pos_tag(nltk.word_tokenize(sentence))
+###################################
+###################################
+###                             ###
+###         SEGMENTATION        ###
+###                             ###
+###################################
+###################################
 
+# Segmentation is a method which divides a
+# full-text into individual sentences. A sentence
+# is a set of words that is complete in itself,
+# typically containing a subject and predicate,
+# conveying a statement, question, exclamation,
+# or command, and consisting of a main clause
+# and sometimes one or more subordinate clauses.
+def segmentation(text):
+    sentences_of_text = nltk.tokenize.sent_tokenize(text)
+    if is_tracing:
+        logging.info("Segmentation : " + str(sentences_of_text))
+    return sentences_of_text
+
+###################################
+###################################
+###                             ###
+###         TOKENIZATION        ###
+###                             ###
+###################################
+###################################
+
+# Tokenization is a way of separating a piece, or
+# a sentence, of text into smaller units that are
+# called tokens. Tokens can be either words,
+# characters, or subwords. Hence, tokenization
+# can be classified into 3 types – word, character,
+# and subword tokenization.
+def tokenization(sentence):
+    words_of_sentence = nltk.word_tokenize(sentence)
+    if is_tracing:
+        logging.info("Tokenization : " + str(words_of_sentence))
+    return words_of_sentence
+
+###################################
+###################################
+###                             ###
+###          POS TAGGING        ###
+###                             ###
+###################################
+###################################
+
+# Tagging is a kind of classification that may be
+# defined as the automatic assignment of description
+# to the tokens. POS tagger divides a sentence
+# into word:tag pair.
+def pog_tagging(words_of_sentence):
+    words_and_tags = nltk.pos_tag(words_of_sentence)
+    if is_tracing:
+        logging.info("Pos tags : " + str(words_and_tags))
+    return words_and_tags
+
+###################################
+###################################
+###                             ###
+###           CHUNKING          ###
+###                             ###
+###################################
+###################################
+
+# We have taken a full-text as an input, it has
+# been divided into separate sentences in segmentation
+# feature, then each individual sentence is tokenized
+# in tokeniza- tion feature, then POS tagging feature
+# run for each separate sentence. So far, three
+# features of six has been launched. Chunking is the
+# forth feature in queue. Chunking is a method that
+# makes decisions using pos tag.
+def chunking(words_and_tags):
+    if is_tracing:
+        logging.info("Chunking : " + str(words_and_tags))
     # Beginning from this statement (except create
     # statement), we generate an instance from
     # sentence class. Looping through words_and_tags
@@ -71,19 +135,12 @@ def tagger(sentence):
     # current word.
     instance = s.sentence('', '', '')
 
-    # This statement creates a log file that
-    # is named instance's unique identifier.
-    log_file = "wtp-" + instance.get_id()
-    create(log_file)
-
     # Understanding which noun is object or subject.
     already_used = False
 
     # Looping through all details of sentence, so that
     # sentence items are stored.
     for word, tag in words_and_tags:
-
-        write(file_name=log_file, text="Word: {} - Tag: {}".format(word, tag))
 
         if not already_used and tag in properties.noun_list:
             instance.set_subject(word)
@@ -98,15 +155,30 @@ def tagger(sentence):
         else:
             continue
 
+    if is_tracing:
+        logging.info(" > sentence : " + instance.get_sentence())
+        logging.info(" > subject : " + instance.get_subject())
+        logging.info(" > verb : " + instance.get_verb())
+        logging.info(" > object : " + instance.get_object())
     return instance
 
+###################################
+###################################
+###                             ###
+###            PARSER           ###
+###                             ###
+###################################
+###################################
 
-##############################
-#                            #
-#          HANDLER           #
-#                            #
-##############################
-def handler(processed_sentence):
+# Before entity-relationship diagram is created, parser
+# runs. Parser is a method which makes rule-based
+# decisions. Parser feature uses our heuristics we
+# defined before in Chapter 3. NLP has multiple possible
+# analysis due to its ambiguous grammar. Parsing determines
+# parse tree of a given sentence where in a group of words
+# is transformed into structures. This may be inapplicable
+# for our heuristic
+def parser(processed_sentence):
 
     # Getting subject, verb and object from processed sentence.
     subject = processed_sentence.get_subject()
@@ -137,8 +209,8 @@ def handler(processed_sentence):
     # If it is in special verbs list, object is an attribute.
     # Otherwise, there is a relation between subject and object.
     if verb in properties.special_verb_list:
-        display(messages.OBTAINED_SPECIAL_VERB.format(str(verb)))
-
+        if is_tracing:
+            logging.info(messages.OBTAINED_SPECIAL_VERB.format(str(verb)))
         # While verb is in special verbs list, we must
         # check subject is in entity, or not. If the "subject"
         # is in entity, we must store object as attributes.
@@ -155,8 +227,8 @@ def handler(processed_sentence):
                 # Set new attributes onto existing entity.
                 e.entity.set_attributes(reference_of_entity, attribute_list)
             except:
-                display(messages.ERROR_SPECIAL_VERB_EXISTING_ENTITY)
-
+                if is_debugging:
+                    logging.error(messages.ERROR_SPECIAL_VERB_EXISTING_ENTITY)
         # Otherwise, we must create an entity using "subject"
         # and store "the object" as attributes.
         else:
@@ -169,7 +241,8 @@ def handler(processed_sentence):
                 new_entity = e.entity(name=subject, attributes=attribute_list)
                 entity_list.append(new_entity)
             except:
-                display(messages.ERROR_SPECIAL_VERB_NEW_ENTITY)
+                if is_debugging:
+                    logging.error(messages.ERROR_SPECIAL_VERB_NEW_ENTITY)
     else:
         try:
             # new relation is created by subject as from-direction,
@@ -179,6 +252,6 @@ def handler(processed_sentence):
             relation_list.append(new_relation)
 
         except:
-            display(messages.ERROR_AT_RELATION)
+            if is_debugging:
+                logging.error(messages.ERROR_AT_RELATION)
 
-# TODO: Delete fonksiyonu eklenecek, entity adı yazılarak o ve ona bağlı diğer veriler silinecek

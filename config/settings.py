@@ -8,7 +8,8 @@
 DEBUG = True
 
 # Monitor parsing of sentences in a text
-LOG = True
+LOG = False
+
 
 
 ##############################
