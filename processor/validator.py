@@ -1,6 +1,8 @@
 from core.trace import create_debug_file as create, write_debug_results as write, display
 import prop.messages as messages
 import logging
+import nltk
+from nltk.stem import *
 
 ##############################
 #                            #
@@ -19,6 +21,8 @@ import prop.common as properties
 ##############################
 logging.basicConfig(filename='validator.log',format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
+nltk.download('wordnet')
+
 ##############################
 #                            #
 #        VALIDATORS          #
@@ -26,7 +30,7 @@ logging.basicConfig(filename='validator.log',format='%(levelname)s:%(message)s',
 ##############################
 
 # Get divided attributes using object
-def get_divided_attributes(object):
+def getDividedAttributes(object, uniqueness_list):
     try:
         # Eventually, it will collect attribute.
         attribute_list = []
@@ -44,13 +48,19 @@ def get_divided_attributes(object):
             # with currently iteration, and then it should be added
             # into stored list.
             for current_element in divided_elements:
-                new_attribute = a.attribute(current_element)
+                primary_key = False
+                if current_element in uniqueness_list:
+                    primary_key = True
+                new_attribute = a.attribute(current_element, primary_key)
                 attribute_list.append(new_attribute)
 
         # If the object contains one element certainly,
         # we must just create an attribute.
         else:
-            new_attribute = a.attribute(object)
+            primary_key = False
+            if object in uniqueness_list:
+                primary_key = True
+            new_attribute = a.attribute(object, primary_key)
             attribute_list.append(new_attribute)
 
         # Returns attributes as list.
@@ -61,10 +71,10 @@ def get_divided_attributes(object):
         logging.error(messages.ERROR_AT_DIVIDING_ATTRIBUTES)
 
 # Get the reference of entity using name and entity list
-def get_entity_by_name(entity_name, entity_list):
+def getEntityByName(entity_name, entity_list):
     try:
         for entity in entity_list:
-            if entity.get_name() == entity_name:
+            if entity.getName() == entity_name:
                 return entity
         return properties.nothing
 
@@ -72,12 +82,12 @@ def get_entity_by_name(entity_name, entity_list):
         logging.error(messages.ERROR_AT_SEARCHING_ENTITY_BY_NAME)
 
 # Get entity names using entity list
-def get_entity_names(entity_list):
+def getEntities(entity_list):
     list_for_entity_names = []
 
     try:
         for entity in entity_list:
-            current = entity.get_name()
+            current = entity.getName()
             list_for_entity_names.append(current)
 
         logging.info("Entities : " + str(list_for_entity_names))
@@ -85,3 +95,28 @@ def get_entity_names(entity_list):
 
     except:
         logging.error(messages.ERROR_AT_CREATING_LIST)
+
+
+def getFirstForm(word, is_verb):
+    stemmer = SnowballStemmer("english")
+    lemma = nltk.wordnet.WordNetLemmatizer()
+    if is_verb:
+        return stemmer.stem(word)
+    return lemma.lemmatize(word)
+
+
+
+
+def make_primary_key(entity_name, attribute_name, entity_list):
+
+    # entity'yi getir
+    # entity icerisindeki attribute lari cek
+    # uygun bir tane var ise pk yap
+    entity = getEntityByName(str(entity_name).lower(), entity_list)
+    attributes = entity.getAttributes()
+
+    for attribute in attributes:
+        if attribute.getName() == attribute_name:
+            attribute.setPrimaryKey(True)
+
+    return None

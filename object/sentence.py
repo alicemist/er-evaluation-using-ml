@@ -15,13 +15,13 @@ class sentence:
     def get_id(self):
         return str(self.id)
 
-    def get_subject(self):
+    def getSubject(self):
         return str(self.subject)
 
-    def set_subject(self, subject):
+    def setSubject(self, subject):
         try:
-            if self.get_subject():
-                already_added = self.get_subject()
+            if self.getSubject():
+                already_added = self.getSubject()
                 recently_added = str(subject).lower()
                 self.subject = already_added + ',' + recently_added
             else:
@@ -29,13 +29,13 @@ class sentence:
         except:
             write(self.id, self.log_file("An error occurred in set subject method."))
 
-    def get_verb(self):
+    def getVerb(self):
         return str(self.verb)
 
-    def set_verb(self, verb):
+    def setVerb(self, verb):
         try:
-            if self.get_verb():
-                already_added = self.get_verb()
+            if self.getVerb():
+                already_added = self.getVerb()
                 recently_added = str(verb).lower()
                 self.verb = already_added + ',' + recently_added
             else:
@@ -43,13 +43,13 @@ class sentence:
         except:
             write(self.id, self.log_file("An error occurred in set verb method."))
 
-    def get_object(self):
+    def getObject(self):
         return str(self.object)
 
-    def set_object(self, object):
+    def setObject(self, object):
         try:
-            if self.get_object():
-                already_added = self.get_object()
+            if self.getObject():
+                already_added = self.getObject()
                 recently_added = str(object).lower()
                 self.object = already_added + ',' + recently_added
             else:
@@ -57,6 +57,6 @@ class sentence:
         except:
             write(self.id, self.log_file("An error occurred in set object method."))
 
-    def get_sentence(self):
-        return "{} {} {}".format(self.get_subject(), self.get_verb(), self.get_object())
+    def getSentence(self):
+        return "{} {} {}".format(self.getSubject(), self.getVerb(), self.getObject())
 

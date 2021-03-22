@@ -1,2 +1,9 @@
 
+opython:S100"QRename method "setSubject" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(’ï»Å8ñ…¤Ú…/
+qpython:S100 "NRename method "getVerb" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(©ûö™üÿÿÿÿ8âÆ¤Ú…/
+qpython:S100#"NRename method "setVerb" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ø®¨Áÿÿÿÿÿ8É—¥Ú…/
+opython:S100"QRename method "getSubject" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(¸•²8É‚£Ú…/
+npython:S100."PRename method "getObject" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(Ğ¼Æ8÷á¥Ú…/
+spython:S1001"PRename method "setObject" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(¶ğƒÂüÿÿÿÿ8¶¿¦Ú…/
 ipython:S101"MRename class "sentence" to match the regular expression ^[A-Z_][a-zA-Z0-9]+$.(ü×”¨úÿÿÿÿ
+ppython:S100<"RRename method "getSentence" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(äÑí8º‹§Ú…/

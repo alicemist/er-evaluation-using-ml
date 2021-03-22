@@ -4,17 +4,19 @@ class entity:
     def __init__(self, name, attributes):
         self.name = name
         self.attributes = attributes
+# primary key burada olacak.
+# weak entity.
 
-    def get_name(self):
+    def getName(self):
         return str(self.name)
 
-    def get_attributes(self):
+    def getAttributes(self):
         return self.attributes
 
-    def set_name(self, name):
+    def setName(self, name):
         self.name = str(name).lower()
 
-    def set_attributes(self, attributes):
+    def setAttributes(self, attributes):
         if attributes == "":
             self.attributes = attributes
         self.attributes = str(self.attributes) + ' ' + str(attributes)

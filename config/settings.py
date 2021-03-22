@@ -5,7 +5,7 @@
 ##############################
 
 # Collect all details of unexpected cases, errors and so on
-DEBUG = True
+DEBUG = False
 
 # Monitor parsing of sentences in a text
 LOG = False

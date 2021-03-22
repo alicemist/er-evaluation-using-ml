@@ -1,2 +1,23 @@
 
-ypython:S3776µ"TRefactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.(Ì·Ùíùÿÿÿÿ8ëôåßƒ/
+}python:S1542ı"XRename function "insertAttribute" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(Ú•ºÙşÿÿÿÿ8Èà¸Ú…/
+„python:S117Ğ"`Rename this local variable "processedObject" to match the regular expression ^[_a-z][a-z0-9_]*$.(•şáøÿÿÿÿ8ãíùÙ…/
+zpython:S117½"VRename this parameter "entityName" to match the regular expression ^[_a-z][a-z0-9_]*$.(—ÿ²şÿÿÿÿ8µÈ÷Ù…/
+~python:S117ä"ZRename this local variable "isChanged" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ú“Ñšıÿÿÿÿ8µÈ÷Ù…/
+wpython:S1542½"RRename function "getEntity" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(—ÿ²şÿÿÿÿ8µÈ÷Ù…/
+€python:S117Î"aRename this local variable "processedSubject" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÖĞÂ›8Ì©ùÙ…/
+xpython:S1542Ø"XRename function "getSingularNoun" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(“üâß8µÈ÷Ù…/
+wpython:S1542â"WRename function "makePrimaryKey" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ºÛí¸8µÈ÷Ù…/
+xpython:S117â"YRename this parameter "attributeName" to match the regular expression ^[_a-z][a-z0-9_]*$.(ºÛí¸8µÈ÷Ù…/
+ypython:S3776ğ"TRefactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.(Ì·Ùíùÿÿÿÿ8ñÿ¸Š„/
+Opython:S1066ğ"/Merge this if statement with the enclosing one.(„º™Â8µÈ÷Ù…/
+xpython:S1542İ"XRename function "getSingularVerb" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ŠñˆÏ8µÈ÷Ù…/
+upython:S117â"VRename this parameter "entityName" to match the regular expression ^[_a-z][a-z0-9_]*$.(ºÛí¸8µÈ÷Ù…/
+}python:S1542”"]Rename function "getDividedAttributes" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(§Ğ¦Ø8µÈ÷Ù…/
+upython:S1542Ê"URename function "makeRelation" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ßìÎâ8µÈ÷Ù…/
+‚python:S117Ï"^Rename this local variable "processedVerb" to match the regular expression ^[_a-z][a-z0-9_]*$.(á¹áŒıÿÿÿÿ8ãíùÙ…/
+€python:S117È"\Rename this local variable "entityNames" to match the regular expression ^[_a-z][a-z0-9_]*$.(º•—•úÿÿÿÿ8µÈ÷Ù…/
+xpython:S1542ñ"SRename function "makeEntity" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(º„¡’şÿÿÿÿ8Èà¸Ú…/
+ypython:S1542Ç"TRename function "getEntities" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ò·ôáüÿÿÿÿ8µÈ÷Ù…/
+xpython:S117š"YRename this local variable "posPairs" to match the regular expression ^[_a-z][a-z0-9_]*$.(ó´î¹8ƒÏ©¯…/
+vpython:S117°"RRename this parameter "wtPair" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ÿ†ĞÊüÿÿÿÿ8¦ßÙ…/
+xpython:S1542™"SRename function "posTagging" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(™Ñ©¦üÿÿÿÿ8¹ˆ¶Û…/

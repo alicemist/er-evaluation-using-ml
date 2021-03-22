@@ -1,0 +1,5 @@
+
+python:S1542!"]Rename function "getDividedAttributes" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(¢ãê§øÿÿÿÿ8Ùòƒ¯…/
+ypython:S1542d"URename function "getFirstForm" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(Ö•¹°úÿÿÿÿ8¼à‡¯…/
+wpython:S1542J"XRename function "getEntityByName" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(‰Ğèœ8ªĞ…¯…/
+spython:S1542U"TRename function "getEntities" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(§±ú8ıé†¯…/

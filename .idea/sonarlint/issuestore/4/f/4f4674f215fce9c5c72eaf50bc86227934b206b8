@@ -1,2 +1,7 @@
 
+wpython:S100"TRename method "getAttributes" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(£ÿğâûÿÿÿÿ8ëÒ€¯…/
+qpython:S100
+"NRename method "getName" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(©Áâˆıÿÿÿÿ8–¬ÿ®…/
 bpython:S101"KRename class "entity" to match the regular expression ^[A-Z_][a-zA-Z0-9]+$.(ÃÇÿ–
+wpython:S100"TRename method "setAttributes" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(­ÜÛ“ùÿÿÿÿ8§‚¯…/
+qpython:S100"NRename method "setName" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(±ÛÂışÿÿÿÿ8µµ¯…/

@@ -1,11 +1,22 @@
 # Define attribute with name
 class attribute:
 
-    def __init__(self, name):
+    def __init__(self, name, primaryKey):
         self.name = name
+        self.primaryKey = primaryKey
 
-    def get_name(self):
+    def getName(self):
         return str(self.name)
 
-    def set_name(self, name):
+    def setName(self, name):
         self.name = name
+
+    def isPrimaryKey(self):
+        return bool(self.primaryKey)
+
+    def setPrimaryKey(self, primaryKey):
+        self.primaryKey = primaryKey
+
+# multi_valued - composite
+# has many locations, has many numbers
+# has locations ozne tekil, nesne cogul.

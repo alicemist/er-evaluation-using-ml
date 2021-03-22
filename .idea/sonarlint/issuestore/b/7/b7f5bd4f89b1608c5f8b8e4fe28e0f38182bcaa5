@@ -1,2 +1,9 @@
 
+vpython:S100"SRename method "isPrimaryKey" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(»İßÿÿÿÿÿ8„Ë¯…/
+qpython:S100"NRename method "getName" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(©Áâˆıÿÿÿÿ8Ï¼Œ¯…/
+tpython:S117"VRename this parameter "primaryKey" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÖÈ8‚§¯…/
+rpython:S100"TRename method "setPrimaryKey" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ÖÈ8ù´¯…/
 jpython:S101"NRename class "attribute" to match the regular expression ^[A-Z_][a-zA-Z0-9]+$.(éÙ¸Ëıÿÿÿÿ
+ypython:S117"VRename this parameter "primaryKey" to match the regular expression ^[_a-z][a-z0-9_]*$.(ª¥¹êøÿÿÿÿ8‡¯…/
+ppython:S116"RRename this field "primaryKey" to match the regular expression ^[_a-z][_a-z0-9]*$.(…ì¨¶8ÜÌ¯…/
+qpython:S100"NRename method "setName" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(±ÛÂışÿÿÿÿ8ÊüŒ¯…/
