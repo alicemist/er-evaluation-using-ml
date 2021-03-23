@@ -33,6 +33,6 @@ LOG_IS_CLOSED = "Log mode is closed. Therefore, you cannot collect any log. It c
 ##############################
 UI_TITLE_RELATION = "Relations"
 UI_CHOICE_ERROR = "Invalid choice!"
-UI_CHOICE_DESCRIPTION = "Select an option:\n\t Run with local data {1}\n\t Run with my data {2}\n\t Exit {3}"
+UI_CHOICE_DESCRIPTION = "Select an option:\n\t Run with local data {1}\n\t Run with my data {2}\n\t Select primary key {3}\n\t Exit {4}"
 UI_CHOICE_TEXT = "Enter your text: "
 UI_SAMPLE_DATA = "Student has name, surname, number. Course contains title, schema. Student takes course."

@@ -371,25 +371,25 @@ def makeEntity(subject, object):
     # and subject is not in entity list. So, it means
     # a new entity has to be created, and attributes
     # have to be stored inside of it.
-    attribute_list = getDividedAttributes(object=object)
+    attributes = getDividedAttributes(object=object)
     uniqueWordList.clear()
 
-    new_entity = e.entity(name=subject, attributes=attribute_list)
-    entityList.append(new_entity)
+    newEntity = e.entity(name=getSingularNoun(subject), attributes=attributes)
+    entityList.append(newEntity)
 
 
 def insertAttribute(subject, object):
     # Retrieved attributes in a list that has been divided through comma.
-    attribute_list = getDividedAttributes(object=object)
+    attributes = getDividedAttributes(object=object)
     uniqueWordList.clear()
 
     # Retrieved entity with reference point through entity name.
     # Calling method requires entity name (in this case subject),
     # and entity list (in this case entity list) to return.
-    reference_of_entity = getEntity(entityName=subject)
+    entity = getEntity(entityName=subject)
 
     # Set new attributes onto existing entity.
-    e.entity.setAttributes(reference_of_entity, attribute_list)
+    e.entity.setAttributes(entity, attributes)
 
 
 '''''''''''''''''''''''''''''''''''
@@ -410,7 +410,7 @@ def getDividedAttributes(object):
         # that is seperated with comma. Thus, we must divide it
         # into seperated elements in a list.
         if object.split(","):
-            divided_elements = object.split(",")
+            items = object.split(",")
 
             # We must obtain elements which will be stored.
             # Therefore, we must run a loop through divided
@@ -418,21 +418,21 @@ def getDividedAttributes(object):
             # attribute. Thus, new attribute object must be created
             # with currently iteration, and then it should be added
             # into stored list.
-            for current_element in divided_elements:
-                primary_key = False
-                if current_element in uniqueWordList:
-                    primary_key = True
-                new_attribute = a.attribute(current_element, primary_key)
-                attributes.append(new_attribute)
+            for item in items:
+                isPrimaryKey = False
+                if item in uniqueWordList:
+                    isPrimaryKey = True
+                newAttribute = a.attribute(getSingularNoun(item), isPrimaryKey)
+                attributes.append(newAttribute)
 
         # If the object contains one element certainly,
         # we must just create an attribute.
         else:
-            primary_key = False
+            isPrimaryKey = False
             if object in uniqueWordList:
-                primary_key = True
-            new_attribute = a.attribute(object, primary_key)
-            attributes.append(new_attribute)
+                isPrimaryKey = True
+            newAttribute = a.attribute(getSingularNoun(object), isPrimaryKey)
+            attributes.append(newAttribute)
 
         # Returns attributes as list.
         logging.info("Attributes : " + str(attributes))

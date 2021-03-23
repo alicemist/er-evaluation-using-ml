@@ -1,32 +1,8 @@
-INFO:Segmentation : ['Student has unique name, surname, number.', 'Course contains title, number.', 'Student takes course']
-INFO:Tokenization : ['Student', 'has', 'unique', 'name', ',', 'surname', ',', 'number', '.']
-INFO:Pos tags : [('Student', 'NN'), ('has', 'VBZ'), ('unique', 'JJ'), ('name', 'NN'), (',', ','), ('surname', 'NN'), (',', ','), ('number', 'NN'), ('.', '.')]
-INFO:Chunking : [('Student', 'NN'), ('has', 'VBZ'), ('unique', 'JJ'), ('name', 'NN'), (',', ','), ('surname', 'NN'), (',', ','), ('number', 'NN'), ('.', '.')]
-INFO: > sentence : student has name,surname,number
-INFO: > subject : student
-INFO: > verb : has
-INFO: > object : name,surname,number
-INFO: > candidate for primary key : ['name']
-INFO:Obtained special verb is has
 INFO:Entities : []
-INFO:Attributes : [<object.attribute.attribute object at 0x11d7beb70>, <object.attribute.attribute object at 0x11d7be9e8>, <object.attribute.attribute object at 0x11d7beb38>]
-INFO:Tokenization : ['Course', 'contains', 'title', ',', 'number', '.']
-INFO:Pos tags : [('Course', 'NN'), ('contains', 'VBZ'), ('title', 'JJ'), (',', ','), ('number', 'NN'), ('.', '.')]
-INFO:Chunking : [('Course', 'NN'), ('contains', 'VBZ'), ('title', 'JJ'), (',', ','), ('number', 'NN'), ('.', '.')]
-INFO: > sentence : course contains number
-INFO: > subject : course
-INFO: > verb : contains
-INFO: > object : number
-INFO: > candidate for primary key : []
-INFO:Obtained special verb is contains
+INFO:Attributes : [<object.attribute.attribute object at 0x11d6c5a58>, <object.attribute.attribute object at 0x11d6c5be0>, <object.attribute.attribute object at 0x11b8ae940>]
 INFO:Entities : ['student']
-INFO:Attributes : [<object.attribute.attribute object at 0x11d7beba8>]
-INFO:Tokenization : ['Student', 'takes', 'course']
-INFO:Pos tags : [('Student', 'NN'), ('takes', 'VBZ'), ('course', 'NN')]
-INFO:Chunking : [('Student', 'NN'), ('takes', 'VBZ'), ('course', 'NN')]
-INFO: > sentence : student takes course
-INFO: > subject : student
-INFO: > verb : takes
-INFO: > object : course
-INFO: > candidate for primary key : []
-INFO:surname is made primary key in student
+INFO:Attributes : [<object.attribute.attribute object at 0x11ff5aef0>]
+INFO:Entities : []
+ERROR:An error is occured during splitting attributes due to comma.
+INFO:Entities : ['student']
+INFO:Attributes : [<object.attribute.attribute object at 0x11d5aa3c8>]
