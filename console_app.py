@@ -8,7 +8,7 @@ while True:
     test_text = ""
 
     if choice == 1:
-        test_text = "Students has unique names, surname, number. Course contains title, number. Student takes course"
+        test_text = "A university contains many faculties. Faculty has unique id and name. Each department belongs to a faculty. A department includes many programs"
         s.run(test=test_text)
     elif choice == 2:
         test_text = input("Enter your text : ")

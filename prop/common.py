@@ -6,9 +6,12 @@ verbs = ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']
 nouns = ['NN', 'NNS', 'NNP', 'NNPS']
 
 pk_candidate_list = ['JJ', 'unique']
+
+relationKey = ['JJ', 'many']
+# many de jj oluyor
 # We are focusing on verb to selection algorithm.
 # Therefore, we have to define special verbs into this list.
-specialVerbs = ["contains", "have", "has", "includes"]
+specialVerbs = ["contains", "have", "has", "includes", "consists"]
 
 # If there is no returning value.
 nothing = ""

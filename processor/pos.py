@@ -81,9 +81,10 @@ def setup():
 '''''''''''''''''''''''''''''''''''
 entityList = []
 attributeList = []
+attributeWordList = []
 relationList = []
 uniqueWordList = []
-
+multiplicities = []
 
 '''''''''''''''''''''''''''''''''''
 ###################################
@@ -188,12 +189,16 @@ def chunking(wtPair):
     # Understanding which noun is object or subject.
     already_used = False
     uniqueness = False
+    multiplicity = False
 
     # Looping through all details of sentence, so that
     # sentence items are stored.
     for word, tag in wtPair:
 
         if not already_used and tag in properties.nouns:
+            if multiplicity:
+                multiplicities.append(str(word).lower())
+                multiplicity = False
             instance.setSubject(word)
             already_used = True
 
@@ -204,10 +209,16 @@ def chunking(wtPair):
             if uniqueness:
                 uniqueWordList.append(word)
                 uniqueness = False
+            if multiplicity:
+                multiplicities.append(str(word).lower())
+                multiplicity = False
             instance.setObject(word)
 
-        elif (tag and word) in properties.pk_candidate_list:
+        elif (tag and str(word).lower()) in properties.pk_candidate_list:
             uniqueness = True
+
+        elif (tag and str(word).lower()) in properties.relationKey:
+            multiplicity = True
 
         else:
             continue
@@ -278,6 +289,7 @@ def parser(processed_sentence):
         else:
             try:
                 makeEntity(subject=subject, object=object)
+                print(multiplicities)
             except:
                 if isDebugging:
                     logging.error(messages.ERROR_SPECIAL_VERB_NEW_ENTITY)
@@ -302,9 +314,12 @@ def maker():
         print(table_line(entity.getName()))
         print(line_border())
         for attribute in entity.getAttributes():
+            #### duzenlenecek!!!
             attribute_line = attribute.getName()
+            if attribute.isMultiValued():
+                attribute_line = attribute_line + " (Multivalued)"
             if attribute.isPrimaryKey():
-                attribute_line = 'PK : ' + attribute.getName()
+                attribute_line = 'PK : ' + attribute.getName() + " " + attribute.isMultiValued()
             print(item_line(attribute_line))
         print(line_border())
         print()
@@ -352,8 +367,16 @@ def makeRelation(subject, verb, object):
 
     # i.e. Students take course
     if not processedSubject.__eq__(subject) and not processedObject.__eq__(object):
-        print()
+        m1 = 'N'
+        m2 = 'N'
 
+    if str(subject).lower() in multiplicities:
+        m1 = 'N'
+
+    if str(object).lower() in multiplicities:
+        m2 = 'N'
+
+    multiplicities.clear()
 
     # new relation is created by subject as from-direction,
     # verb as action and object as to-direction. Then,
@@ -371,7 +394,8 @@ def makeEntity(subject, object):
     # and subject is not in entity list. So, it means
     # a new entity has to be created, and attributes
     # have to be stored inside of it.
-    attributes = getDividedAttributes(object=object)
+    isSinglePerson = True if getSingularNoun(subject).__eq__(subject) else False
+    attributes = getDividedAttributes(object=object, isSinglePerson=isSinglePerson)
     uniqueWordList.clear()
 
     newEntity = e.entity(name=getSingularNoun(subject), attributes=attributes)
@@ -380,7 +404,8 @@ def makeEntity(subject, object):
 
 def insertAttribute(subject, object):
     # Retrieved attributes in a list that has been divided through comma.
-    attributes = getDividedAttributes(object=object)
+    isSinglePerson = True if getSingularNoun(subject).__eq__(subject) else False
+    attributes = getDividedAttributes(object=object, isSinglePerson=isSinglePerson)
     uniqueWordList.clear()
 
     # Retrieved entity with reference point through entity name.
@@ -401,11 +426,12 @@ def insertAttribute(subject, object):
 ###################################
 ###################################
 '''''''''''''''''''''''''''''''''''
-def getDividedAttributes(object):
+def getDividedAttributes(object, isSinglePerson):
     try:
         # Eventually, it will collect attribute.
-        attributes = []
+        tempAttributes = []
 
+        attributes = []
         # The object might include more than one elements
         # that is seperated with comma. Thus, we must divide it
         # into seperated elements in a list.
@@ -422,8 +448,17 @@ def getDividedAttributes(object):
                 isPrimaryKey = False
                 if item in uniqueWordList:
                     isPrimaryKey = True
-                newAttribute = a.attribute(getSingularNoun(item), isPrimaryKey)
-                attributes.append(newAttribute)
+                processedItem = getSingularNoun(item)
+
+                isMultiValued = False
+                if isSinglePerson:
+                    if not processedItem.__eq__(item):
+                        isMultiValued = True
+
+                # if not processedItem in attributeWordList:
+                newAttribute = a.attribute(processedItem, isPrimaryKey, isMultiValued)
+                tempAttributes.append(newAttribute)
+                attributeWordList.append(processedItem)
 
         # If the object contains one element certainly,
         # we must just create an attribute.
@@ -431,12 +466,15 @@ def getDividedAttributes(object):
             isPrimaryKey = False
             if object in uniqueWordList:
                 isPrimaryKey = True
-            newAttribute = a.attribute(getSingularNoun(object), isPrimaryKey)
-            attributes.append(newAttribute)
+            processedItem = getSingularNoun(object)
+            #if not processedItem in attributeWordList:
+            newAttribute = a.attribute(processedItem, isPrimaryKey)
+            tempAttributes.append(newAttribute)
+            attributeWordList.append(processedItem)
 
         # Returns attributes as list.
-        logging.info("Attributes : " + str(attributes))
-        return attributes
+        logging.info("Attributes : " + str(tempAttributes))
+        return tempAttributes
 
     except:
         logging.error(messages.ERROR_AT_DIVIDING_ATTRIBUTES)
@@ -501,3 +539,5 @@ def makePrimaryKey(entityName, attributeName):
     except:
         if isDebugging:
             logging.error("makePrimaryKey is not run properly")
+
+
